@@ -1,18 +1,21 @@
 package models
 
 import (
+	"github.com/jinzhu/gorm"
 	"github.com/revel/revel"
 	"time"
 )
 
 type Post struct {
-	Id        int64        `db:"id"`
-	Title     string       `db:"title"`
-	Content   string       `db:"content"`
-	Author    *Contributor `db:"author"`
-	Published bool         `db:"published"`
-	Created   time.Time    `db:"created"`
-	Updated   time.Time    `db:"updated"`
+	ID        int64
+	Title     string    `sql:"size:1024;not null"`
+	Content   string    `sql:"type:text;not null"`
+	Published bool      `sql:"default:false;not null"`
+	CreatedAt time.Time `sql:"default:NOW();not null"`
+	UpdatedAt time.Time `sql:"default:NOW();not null"`
+
+	Author   *Contributor
+	AuthorID int64 `sql:"not null"` // foreign key
 }
 
 func (p Post) Validate(v *revel.Validation) {

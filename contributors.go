@@ -6,13 +6,15 @@ import (
 )
 
 type Contributor struct {
-	Id        int64     `db:"id"`
-	Name      string    `db:"name"`
-	Email     string    `db:"email"`
-	Password  string    `db:"password"`
-	About     string    `db:"about"`
-	JoinSince time.Time `db:"join_since"`
-	Photo     string    `db:"photo"`
+	ID        int64
+	Name      string    `sql:"size:255;not null"`
+	Email     string    `sql:"size:255;not null"`
+	Password  string    `sql:"type:text;not null"`
+	About     string    `sql:"type:text;not null"`
+	JoinSince time.Time `sql:"default:NOW();not null"`
+	Photo     string    `sql:"type:text;not null"`
+
+	Posts []Post
 }
 
 func (c Contributor) Validate(v *revel.Validation) {
