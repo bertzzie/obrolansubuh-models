@@ -15,6 +15,9 @@ type Contributor struct {
 	JoinSince time.Time `sql:"default:NOW();not null"`
 	Photo     string    `sql:"type:text;not null"`
 
+	Type   *ContributorType
+	TypeID int64 `sql:"not null"` // foreign key
+
 	Posts []Post
 }
 
