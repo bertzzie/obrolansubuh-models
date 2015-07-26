@@ -9,7 +9,7 @@ import (
 type Contributor struct {
 	ID        int64
 	Name      string    `sql:"size:255;not null;index:name"`
-	Email     string    `sql:"size:255;not null;index:email"`
+	Email     string    `sql:"size:255;not null;unique_index"`
 	Password  string    `sql:"type:text;not null"`
 	About     string    `sql:"type:text;not null"`
 	JoinSince time.Time `sql:"default:NOW();not null"`
