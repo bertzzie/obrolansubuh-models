@@ -6,7 +6,7 @@ import (
 
 type SiteInfo struct {
 	ID             int64
-	AboutUsTitle   string `sql:"size:1024;not null"`
+	AboutUsTitle   string `sql:"type:text;size:1024;not null"`
 	AboutUsContent string `sql:"type:text;not null"`
 	TwitterURL     string `sql:"type:text;not null"`
 	FacebookURL    string `sql:"type:text;not null"`
