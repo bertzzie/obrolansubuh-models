@@ -16,7 +16,7 @@ type Contributor struct {
 	Photo     string    `sql:"type:text;not null"`
 
 	Type   *ContributorType
-	TypeID int64 `sql:"not null"` // foreign key
+	TypeID int64 `sql:"not null;REFERENCES contributor_types(id)"` // foreign key
 
 	Posts []Post
 }
