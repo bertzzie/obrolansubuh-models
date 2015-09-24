@@ -18,8 +18,8 @@ type Post struct {
 	UpdatedAt  time.Time `sql:"default:NOW();not null"`
 
 	Author     *Contributor
-	AuthorID   int64      `sql:"not null;REFERENCES contributors(id)"` // foreign key
-	Categories []Category `gorm:"many2many:post_categories"`           // many to many to prepare for future use
+	AuthorID   int64       `sql:"not null;REFERENCES contributors(id)"` // foreign key
+	Categories []*Category `gorm:"many2many:post_categories"`           // many to many to prepare for future use
 }
 
 func (p *Post) TitleSlug() string {
