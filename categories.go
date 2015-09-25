@@ -19,7 +19,7 @@ func (c Category) Validate(v *revel.Validation) {
 	v.Required(c.Heading)
 }
 
-func (c *Category) Slug() string {
+func (c Category) Slug() string {
 	reg, err := regexp.Compile("[^A-Za-z0-9- ]+")
 	if err != nil {
 		revel.ERROR.Println("[LGERR] Failed to compile regex in Models.Category.TitleSlug")
